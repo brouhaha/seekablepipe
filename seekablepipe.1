@@ -1,0 +1,44 @@
+.TH SEEKABLEPIPE "1" "April 2014"
+.SH NAME
+seekablepipe \- allows piping input to program that seek on stdin
+.SH SYNOPSIS
+.B seekablepipe [-p
+.I prefix
+.B ] command [
+.I args...
+.B ]
+.SH DESCRIPTION
+.B seekablepipe
+makes it possible to pipe input into programs that expect to be able to
+seek on standard input.  This is done by capturing standard input into a
+temporary file, redirecting standard input from the temporary file, then
+executing the desired command.
+.SH OPTIONS
+.IP "-p prefix"
+Use prefix as the base for the filename, rather than the default
+"/tmp/sp".  The name of the temporary file will be the concatenation
+of the prefix and six random characters.  This option may be useful if
+you have a memory-based filesystem available for temporary files, but
+it is mounted somewhere other than /tmp.
+.SH FILES
+By default, the temporary file will be /tmp/spXXXXXX, with XXXXXX replaced
+by randomly selected characters (using mkstemp(3)).
+.SH EXAMPLES
+The unzip command normally cannot be used with the ZIP file provided via a
+pipe, but seekablepipe can provide that capability. For instance, if you
+have a base64-encoded ZIP file, you can list its contents using:
+.IP
+base64 -d foo.zip.base64 | seekablepipe unzip -v /dev/stdin
+.PP
+.SH BUGS
+The current implementation depends on the Linux spice(2) system call.  For
+portability, use of splice should be configurable.
+.SH AUTHOR
+Eric Smith <spacewar@gmail.com>
+.SH COPYRIGHT
+Copyright \(co 2014 Eric Smith
+.br
+License GPLv2: GNU GPL version 2 <http://www.gnu.org/licenses/gpl-2.0.html>
+.br
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
