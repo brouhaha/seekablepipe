@@ -1,10 +1,10 @@
 /*
   seekablepipe - allows piping input to programs that seek on stdin
 
-  Copyright 2014 Eric Smith <spacewar@gmail.com>
+  Copyright 2014, 2016 Eric Smith <spacewar@gmail.com>
 
   This program is free software: you can redistribute it and/or modify
-  it under the terms of version 2 of the GNU General Public License
+  it under the terms of version 3 of the GNU General Public License
   as published by the Free Software Foundation.
 
   This program is distributed in the hope that it will be useful,

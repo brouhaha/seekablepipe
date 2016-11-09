@@ -31,14 +31,14 @@ have a base64-encoded ZIP file, you can list its contents using:
 base64 -d foo.zip.base64 | seekablepipe unzip -v /dev/stdin
 .PP
 .SH BUGS
-The current implementation depends on the Linux spice(2) system call.  For
+The current implementation depends on the Linux splice(2) system call.  For
 portability, use of splice should be configurable.
 .SH AUTHOR
 Eric Smith <spacewar@gmail.com>
 .SH COPYRIGHT
-Copyright \(co 2014 Eric Smith
+Copyright \(co 2014, 2016 Eric Smith
 .br
-License GPLv2: GNU GPL version 2 <http://www.gnu.org/licenses/gpl-2.0.html>
+License GPLv2: GNU GPL version 3 <http://www.gnu.org/licenses/gpl-3.0.html>
 .br
 This is free software; you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
